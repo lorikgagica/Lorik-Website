@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+/* THIS IS REQUIRED FOR TAILWIND V4 DARK MODE CLASS TOGGLE */
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --color-primary: #312e81; /* Deep Indigo */
+  --color-secondary: #7c3aed; /* Electric Violet */
+  --color-accent: #60a5fa; /* Soft Twilight Blue */
+  --color-cream: #f0f9ff; /* Pale Ice-Blue for airy layout */
+  --color-espresso: #0f172a; /* Deep Navy for high contrast */
+  --color-dark-bg: #020617; /* Deep Obsidian */
+  --color-dark-card: #0f172a; /* Rich Midnight Navy */
+  --color-pale-lavender: #f5f3ff;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 120px;
+  }
+  body {
+    @apply bg-white text-slate-900 font-sans antialiased transition-colors duration-500;
+  }
+  .dark body {
+    @apply bg-[#020617] text-white;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-white/10 backdrop-blur-md border border-white/20;
+  }
+  .dark .glass {
+    @apply bg-slate-900/40 border-slate-700/50;
+  }
+  .blue-purple-glow {
+    @apply shadow-[0_0_20px_rgba(49,46,129,0.2)];
+  }
+  .dark .blue-purple-glow {
+    @apply shadow-[0_0_20px_rgba(124,58,237,0.3)];
+  }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
